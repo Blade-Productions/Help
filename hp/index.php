@@ -1,3 +1,5 @@
+<?php require_once "./uploader/phpuploader/include_phpuploader.php" ?>
+<?php session_start(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,7 +9,8 @@
 <script type='text/javascript' src='js/jquery.js'></script>
 <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
 <script type='text/javascript' src='js/basic.js'></script>
-
+<link rel="stylesheet" type="text/css" media="all" href="http://opensource.steffenhollstein.de/static/projects/modalbox/css/jquery.modalbox.css" />	
+<script type="text/javascript" src="http://opensource.steffenhollstein.de/static/projects/modalbox/js/jquery.modalbox-latest-min.js"></script>	
 </head>
 <body>
 <div id="top_menu">
@@ -28,66 +31,60 @@
         Herzlich Willkommen auf Pic2Cloud.de!
         </div>
         <div class="content_text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        </div>
-        <div class="content_text">
-        <img src="images/illustr2.jpg" width="130" height="79"  alt="pic" title="pic" class="pic" />
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        </div>
-        <div class="title">
-        About us
-        </div>
-        <div class="content_text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        </div>
-        
-        <div class="title">
-        Partners
-        </div>
-        <div class="content_text">
-        <a href="http://www.csscreme.com"><img src="images/csscreme.jpg" width="106" height="34" alt="s" title="s" class="inspiration" /></a>
-       	<a href="http://www.wallpaperstock.net"><img src="images/wallpaperstock.jpg" width="100" height="34" alt="s" title="s" class="inspiration" /></a>
-        <a href="http://www.inethouse.info"><img src="images/inethouse.jpg" width="103" height="34" alt="s" title="s" class="inspiration" /></a>
+        	<?php
+				$uploader=new PhpUploader();
 
+				$uploader->MultipleFilesUpload=false;
+				$uploader->InsertText="Bild hochladen (Maximal 5MB)";
+
+				$uploader->MaxSizeKB=1024000 / 2;	
+				$uploader->AllowedFileExtensions="jpeg,jpg,gif,png";
+
+				$uploader->ProgressTextTemplate = "%F%.. %P% %SEND% / %SIZE% , %KBPS% , %T% Sekunden verbleiben.";
+				$uploader->SaveDirectory="./tmpuploads";
+
+				$uploader->Render();
+			?>
         </div>
     </div>
+
+	<script type='text/javascript'>
+	function CuteWebUI_AjaxUploader_OnTaskComplete(task)
+	{
+		$.ajax({
+		   type: "POST",
+		   url: "move_file.php",
+		   data: "name=" + task.FileName,
+		   success: function(msg){
+			_Uploaded(msg);
+		     
+		   }
+		 });
+	}
+	
+	function _Uploaded(msg) {
+		jQuery.fn.modalBox({ 
+			directCall : {
+				data : "<img src='http://tabletpress.net/smiley.jpg' style='width: 75px; height: 75px;' /><h1 style='margin-left: -3px;'>Bild hochgeladen</h1><p style='color: black; '><font size='6'>Der Link zum Bild: <a target='_blank' href='." + msg + "'>Bild</a></font></p>",
+				setWidthOfModalLayer : 800
+		}});
+		
+	}
+	</script>
     
     <div id="page_content_right">
     	<div class="title">
-        Letzte Uploads
+        Lezter Upload
         </div>
         <div class="content_text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
         </div>
         <div class="content_text">
-        <a href="details.html"><img src="images/pic/1.jpg" width="100" height="100"  alt="pic" title="pic" class="gallery" /></a>
-        <a href="details.html"><img src="images/pic/2.jpg" width="100" height="100"  alt="pic" title="pic" class="gallery" /></a>
-        <a href="details.html"><img src="images/pic/3.jpg" width="100" height="100"  alt="pic" title="pic" class="gallery" /></a>
-        <a href="details.html"><img src="images/pic/4.jpg" width="100" height="100"  alt="pic" title="pic" class="gallery" /></a>
-        <a href="details.html"><img src="images/pic/5.jpg" width="100" height="100"  alt="pic" title="pic" class="gallery" /></a>
-        <a href="details.html"><img src="images/pic/6.jpg" width="100" height="100"  alt="pic" title="pic" class="gallery" /></a>
-        <a href="details.html"><img src="images/pic/7.jpg" width="100" height="100"  alt="pic" title="pic" class="gallery" /></a>
-        <a href="details.html"><img src="images/pic/8.jpg" width="100" height="100"  alt="pic" title="pic" class="gallery" /></a>
-        <a href="details.html"><img src="images/pic/9.jpg" width="100" height="100"  alt="pic" title="pic" class="gallery" /></a>
-        </div>
-        <div class="more">
-        <img src="images/more.jpg" width="20" height="20" alt="more" title="more" border="0" class="more" />
-        <div class="link_more"><a href="gallery.html"> Visit gallery</a></div>
+        <a href="#"><img src="<?php echo file_get_contents("./last_file.txt"); ?>" width="100" height="100"  alt="pic" title="Lezter Upload" class="gallery" /></a>
         </div>
     </div>
     
     
     <div id="page_bottom">
-    		<div class="title">
-        	Inspiration Site
-        	</div>
-            <div class="content_text">
-			 <a href="http://www.csscreme.com"><img src="images/s5.jpg" width="125" height="40" alt="s" title="s" class="inspiration" /></a>
-             <a href="#"><img src="images/s2.jpg" width="125" height="40" alt="s" title="s" class="inspiration" /></a>
-             <a href="#"><img src="images/s3.jpg" width="125" height="40" alt="s" title="s" class="inspiration" /></a>
-             <a href="#"><img src="images/s4.jpg" width="125" height="40" alt="s" title="s" class="inspiration" /></a>
-             <a href="#"><img src="images/s1.jpg" width="125" height="40" alt="s" title="s" class="inspiration" /></a>
-       		 </div>
 <hr color="gray" height="0">
 	<center><font size="1" color="gray">&copy; 2011 Pic2Cloud.de - Pic2Cloud ist von Projekt von <a style="text-decoration:none;" target="_blank" href="http://www.2cloud-network.de/">2Cloud-Network</a>.</font></center>
     </div>

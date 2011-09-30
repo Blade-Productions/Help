@@ -328,10 +328,10 @@ class PhpUploader
 	public $ProgressTextTemplate;
 		
 	/// Gets or sets the "Cancel all Uploads" message.
-	public $CancelAllMsg="Cancel all Uploads";
+	public $CancelAllMsg="Alle Uploads abbrechen";
 	
 	/// Gets or sets the "Cancel upload" message.
-	public $CancelUploadMsg="Cancel upload";
+	public $CancelUploadMsg="Upload abbrechen";
 	
 	/// Gets or sets the "upload is processing" message.
 	public $UploadProcessingMsg;
@@ -349,7 +349,7 @@ class PhpUploader
 	public $FileTypeNotSupportMsg;
 	
 	/// Gets or sets the "Uploading.." message.
-	public $UploadingMsg="Uploading..";
+	public $UploadingMsg="Hochladen..";
 	
 	/// Gets or sets the FlashWarning Image.
 	public $FlashWarningImage;
