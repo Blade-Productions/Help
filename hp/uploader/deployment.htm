@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>Deployment PHP Uploader</title>
+	<link rel="stylesheet" href="example.css" type="text/css" />
+    <link rel="stylesheet" href="SyntaxHighlighter.css" type="text/css" />
+</head>
+<body>	
+	<table width="100%">
+		<tr>
+			<td>
+			    <a href="default.htm"><img alt="CuteEditor" src="http://phpfileuploader.com/images/logo.gif" /></a>
+			</td>
+			<td align="right">
+				<a href="http://AjaxUploader.com/">Ajax Uploader for ASP.NET</a>
+			</td>
+		</tr>
+		<tr>
+		    <td colspan="2" class="topmenu">
+			    <a class="menu" href="default.htm" title="Home">Home</a> | 
+			    <a class="menu" href="demo.htm">Demo</a> | 
+			    <a class="menu" href="deployment.htm">Deployment</a> | 
+			    <a class="menu" href="http://cutesoft.net/forums/53/ShowForum.aspx" title="File Upload Forums">Forums</a> | 
+			    <a class="menu" href="http://phpfileuploader.com/Order.php" title="Purchase">Order</a>
+			</td>
+		</tr>
+	</table>
+	<table style="width:750px;" cellpadding="15">
+		<tr>
+			<td>
+			     <h1>Deployment PHP File Uploader</h1>
+        PHP File Uploader is 100% HTML and JavaScript code on the client, and PHP code on the server, and can be setup on your web server in just 5 minutes,
+        simply by following this setup guide.
+        <br />
+        <br />
+            <table cellSpacing="0" cellPadding="5" width="100%" border="0">
+              <tr>
+                <td vAlign="top">
+                  <div>
+                    <b>1. Deploying Uploader Client files. </b>
+                  </div>
+                  <br />
+                  <div>
+                    The "phpuploader" folder and all file it contains (located in the archive) should be deployed to http://{your site}/{your application}/phpuploader/ on your web site.
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <b>2. Adding Uploader into PHP page.</b>
+                  </p>
+<div class="dp-highlighter">
+<div class="bar"></div>
+<ol class="dp-c">
+    <li class="alt"><span class="comment">//Step&nbsp;1:&nbsp;Register&nbsp;Uploader&nbsp;component&nbsp;to&nbsp;your&nbsp;page </span><span>&nbsp;&nbsp;</span></li>
+    <li><span>&lt;?php&nbsp;</span><span class="keyword">require_once</span><span>&nbsp;</span><span class="string">"phpuploader/include_phpuploader.php"</span><span>&nbsp;?&gt; &nbsp;&nbsp;</span></span></li>
+    <li class="alt"><span>&lt;html&gt; &nbsp;&nbsp;</span></li>
+    <li><span>&lt;body&gt; &nbsp;&nbsp;</span></li>
+    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php &nbsp;&nbsp;</span></li>
+    <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//Step&nbsp;2:&nbsp;Create&nbsp;Uploader&nbsp;object. </span><span>&nbsp;&nbsp;</span></span></li>
+    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="vars">$uploader</span><span>=</span><span class="keyword">new</span><span>&nbsp;PhpUploader(); &nbsp;&nbsp;</span></span></li>
+    <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//Step&nbsp;3:&nbsp;The files will be uploaded to the following folder directly.</span><span>&nbsp;&nbsp;</span></span></li>
+    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="vars">$uploader</span><span>-&gt;SaveDirectory=</span><span class="string">"savefiles"</span><span>;&nbsp; &nbsp;&nbsp;</span></span></li>
+    <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//Step&nbsp;4:&nbsp;Render&nbsp;Uploader </span><span>&nbsp;&nbsp;</span></span></li>
+    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$uploader-&gt;Render(); &nbsp;&nbsp;</span></li>
+    <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?&gt; &nbsp;&nbsp;</span></li>
+    <li class="alt"><span>&lt;/body&gt; &nbsp;&nbsp;</span></li>
+    <li><span>&lt;/html&gt;&nbsp;&nbsp;</span></li>
+</ol>
+</div>
+                </td>
+              </tr>      
+           </table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
